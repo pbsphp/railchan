@@ -1,6 +1,7 @@
-| #{@board.name} :
-br
+.row
+  .large-9.columns role="content"
+    - @board.topics.each do |topic|
+      = render partial: "shared/topic_preview", locals: { topic: topic }
+      hr
 
-- @topics.each do |topic|
-    | #{topic.author} - #{topic.text}
-    br
+    = render partial: "shared/form_topic", locals: { board: @board, topic: @new_topic }

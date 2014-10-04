@@ -1,4 +1,3 @@
-= simple_form_for [ @board, @topic ] do |f|
-    = f.input :subject
-    = f.input :text
-    = f.button :submit
+.row
+  .large-9.columns role="content"
+    = render partial: "shared/form_topic", locals: { board: @board, topic: @topic }

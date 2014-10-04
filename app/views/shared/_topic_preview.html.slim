@@ -1,0 +1,8 @@
+div.topic
+  h3
+    a href="#{board_topic_path(@board, topic)}" = topic.subject || "NoName"
+  p = topic.text
+  ul.large-8.no-bullet
+    - topic.comments.each do |comment|
+      li.panel
+        = comment.text

@@ -1,0 +1,50 @@
+
+nav.top-bar.hide-for-small data-topbar=""
+  ul.title-area
+    li.name
+      h1
+        a href="/"  Railchan
+  section.top-bar-section
+    ul.right
+
+      - @boards_groups.each do |boards_group|
+
+        li.divider
+        li.has-dropdown.not-click
+          a href="#" = boards_group.name
+          ul.dropdown
+            li.title.back.js-generated
+              h5
+                a href="javascript:void(0)"  Back
+
+            / So ugly, fuck this
+            / - @boards.select { |board| board.boards_group_id == boards_group.id }.each do |board|
+            - boards_group.boards.each do |board|
+              li
+                a href="/" = board.name
+
+
+        li.divider
+        li.has-dropdown.not-click
+          a href="learn/features.html"  Learn
+          ul.dropdown
+            li.title.back.js-generated
+              h5
+                a href="javascript:void(0)"  Back
+            li
+              a href="learn/about.html"  About
+        li.divider
+        li.has-dropdown.not-click
+          a href="business/services.html"  Business
+          ul.dropdown
+            li.title.back.js-generated
+              h5
+                a href="javascript:void(0)"  Back
+            li
+              a href="business/services.html"  Services
+        li.divider
+        li
+          a href="/docs"  Docs
+        li.divider
+        li.has-form
+          a.small.button href="/docs"  Getting Started

@@ -4,12 +4,14 @@ class TopicsController < ApplicationController
   def index
     @board = Board.find(params[:board_id])
     @topics = Topic.all
+    @new_topic = Topic.new
   end
 
 
   def show
     @board = Board.find(params[:board_id])
     @topic = Topic.find(params[:id])
+    @new_comment = Comment.new
   end
 
 
