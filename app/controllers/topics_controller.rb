@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
 
-
   def index
     @board = Board.find(params[:board_id])
     @topics = Topic.all
