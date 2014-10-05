@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
 
   def get_boards_and_boards_groups
-    @boards = Board.all
     @boards_groups = BoardsGroup.all
   end
 end
