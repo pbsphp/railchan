@@ -1,20 +1,18 @@
 class CommentsController < ApplicationController
 
 
-  def index
-    @board = Board.find(params[:board_id])
-    @topic = Topic.find(params[:topic_id])
-    @comments = Comment.all
-  end
-
-
   def create
     @board = Board.find(params[:board_id])
     @topic = Topic.find(params[:topic_id])
 
     @comment = Comment.new(comment_params)
     @comment.topic = @topic
-    @comment.save!
+
+    if @comment.save
+      redirect_to board_topic_path(@board, @topic)
+    else
+      redirect_to :back, flash: { error: @comment.errors.full_messages.to_sentence }
+    end
   end
 
 

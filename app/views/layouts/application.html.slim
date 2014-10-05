@@ -11,6 +11,12 @@ html
 
     = render "shared/header"
 
+    div#flash_messages
+    - flash.each do |key, value|
+      div class=("alert-box #{key.to_s}") data-alert=""
+        = content_tag(:div, value, class: "flash #{key}")
+        a.close href="#"  &times;
+
     = yield
 
     = javascript_include_tag "application"
