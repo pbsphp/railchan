@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004150813) do
+ActiveRecord::Schema.define(version: 20141005140244) do
 
   create_table "boards", force: true do |t|
     t.string   "name",            null: false
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 20141004150813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "board_id"
+    t.datetime "bumped_at"
   end
 
   add_index "topics", ["board_id"], name: "index_topics_on_board_id"
+  add_index "topics", ["bumped_at"], name: "index_topics_on_bumped_at"
 
 end
