@@ -1,0 +1,7 @@
+= render partial: "shared/board_header", locals: { board: @board }
+
+.row
+  .large-9.columns role="content"
+    = render partial: "shared/topic_full", locals: { topic: @topic }
+    hr
+    = render partial: "shared/form_comment", locals: { board: @board, topic: @topic, comment: @new_comment }

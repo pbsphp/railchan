@@ -1,0 +1,7 @@
+.row
+  .large-9.columns role="content"
+    - @boards.each do |board|
+      h3
+        a href="#{board_path(board)}"
+          | /#{board.name}/ - #{board.title}
+        br

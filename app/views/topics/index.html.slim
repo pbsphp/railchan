@@ -1,0 +1,9 @@
+= render partial: "shared/board_header", locals: { board: @board }
+
+.row
+  .large-9.columns role="content"
+    - @board.topics.includes(:comments).references(:comments).each do |topic|
+      = render partial: "shared/topic_preview", locals: { topic: topic }
+      hr
+
+    = render partial: "shared/form_topic", locals: { board: @board, topic: @new_topic }
