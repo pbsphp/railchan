@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
 
 
   def get_boards_and_boards_groups
-    @boards_groups = BoardsGroup.all
+    @boards_groups = BoardsGroup.eager_load(:boards)
   end
 end
