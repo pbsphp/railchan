@@ -3,6 +3,7 @@ div.topic
     a href="#{board_topic_path(@board, topic)}" = topic.subject || "NoName"
   p = topic.text
   ul.large-8.no-bullet
-    - topic.comments.each do |comment|
+    = topic.comments.size
+    - topic.comments.last(3).each do |comment|
       li.panel
         = comment.text
