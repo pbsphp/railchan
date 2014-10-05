@@ -3,8 +3,7 @@ nav.top-bar.hide-for-small data-topbar=""
   ul.title-area
     li.name
       h1
-        a href="/"
-          | Railchan
+        a href="/" Railchan
 
   section.top-bar-section
     ul.right
@@ -21,4 +20,5 @@ nav.top-bar.hide-for-small data-topbar=""
 
             - boards_group.boards.each do |board|
               li
-                a href="#{board_path(board)}" = board.name
+                a href="#{board_path(board)}"
+                  | /#{board.name}/ - #{board.title}
