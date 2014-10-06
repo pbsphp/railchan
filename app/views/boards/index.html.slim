@@ -1,7 +1,15 @@
 .row
-  .large-9.columns role="content"
-    - @boards.each do |board|
-      h3
-        a href="#{board_path(board)}"
-          | /#{board.name}/ - #{board.title}
-        br
+  .text-center
+    h1 Railchan
+
+.row
+  .row.collapse
+    ul.large-block-grid-4.medium-block-grid-2.text-center
+      - @boards_groups.each do |boards_group|
+        li.columns
+          h3
+            = boards_group.name
+          - boards_group.boards.each do |board|
+            a href="#{board_path(board)}"
+              | /#{board.name}/ - #{board.title}
+            br
