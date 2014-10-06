@@ -76,14 +76,17 @@ ActiveRecord::Schema.define(version: 20141006112234) do
 
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
 
-  create_table "replies", id: false, force: true do |t|
-    t.integer "to_connect_id",     null: false
-    t.integer "from_connect_id",   null: false
-    t.string  "to_connect_type",   null: false
-    t.string  "from_connect_type", null: false
+  create_table "replies", force: true do |t|
+    t.integer "comment_reply_id"
+    t.integer "topic_reply_id"
+    t.integer "comment_reply_to_id"
+    t.integer "topic_reply_to_id"
   end
 
-  add_index "replies", ["to_connect_id", "from_connect_id"], name: "index_replies_on_to_connect_id_and_from_connect_id"
+  add_index "replies", ["comment_reply_id"], name: "index_replies_on_comment_reply_id"
+  add_index "replies", ["comment_reply_to_id"], name: "index_replies_on_comment_reply_to_id"
+  add_index "replies", ["topic_reply_id"], name: "index_replies_on_topic_reply_id"
+  add_index "replies", ["topic_reply_to_id"], name: "index_replies_on_topic_reply_to_id"
 
   create_table "topics", force: true do |t|
     t.string   "author"
