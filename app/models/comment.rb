@@ -7,6 +7,22 @@ class Comment < ActiveRecord::Base
 
   after_create :bump_topic
 
+  has_many :replies,
+            -> { where(from_connect_type: "Comment") },
+            foreign_key: :from_connect_id
+
+
+  def comment_reply_ids
+    reps = self.replies.select { |r| r.to_connect_type == "Comment" }
+    reps.collect(&:to_connect_id)
+  end
+
+
+  def topic_reply_ids
+    reps = self.replies.select { |r| r.to_connect_type == "Topic" }
+    reps.collect(&:to_connect_id)
+  end
+
 
   private
 
