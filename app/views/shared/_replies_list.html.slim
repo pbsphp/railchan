@@ -1,0 +1,16 @@
+- if comment_replies.present? || topic_replies.present?
+  p.replies
+    - if comment_replies.present?
+      small.replies-list
+        - comment_replies.each_with_index do |reply, index|
+          a.reply-link href="#" >>#{reply.id}
+          - if index < comment_replies.size - 1
+            ' ,
+
+    - if topic_replies.present?
+      small.replies-list
+        br
+        - topic_replies.each_with_index do |reply, index|
+          a.reply-link href="#" >>T#{reply.id}
+          - if index < topic_replies.size - 1
+            ' ,

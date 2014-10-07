@@ -9,11 +9,12 @@ div.topic
       ' #T
       span.post_id =' topic.id
 
-      p = topic.comment_replies.collect(&:id)
-      p = topic.topic_replies.collect(&:id)
+  p.text
+    = topic.text
+
+  = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }
 
 
-  p = topic.text
   ul.large-8.no-bullet
     - topic.comments.includes([:comment_replies, :topic_replies]).each do |comment|
       li.panel
@@ -30,6 +31,7 @@ div.topic
             ' #
             span.post_id =' comment.id
 
-        p = comment.text
-        p = comment.comment_replies.collect(&:id)
-        p = comment.topic_replies.collect(&:id)
+        p.text
+          = comment.text
+
+        = render partial: "shared/replies_list", locals: { comment_replies: comment.comment_replies, topic_replies: comment.topic_replies }
