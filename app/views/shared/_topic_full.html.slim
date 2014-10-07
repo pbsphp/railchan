@@ -10,7 +10,7 @@ div.topic.post
       span.post_id =' topic.id
 
   p.text
-    = format_text(topic.text)
+    = topic.text
 
   = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }
 

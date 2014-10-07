@@ -1,16 +1,3 @@
-- if comment_replies.present? || topic_replies.present?
-  p.replies
-    - if comment_replies.present?
-      small.replies-list
-        - comment_replies.each_with_index do |reply, index|
-          a.reply-link href="" onmouseover=("showBubble(this, '#{comment_path(reply)}')") &gt;&gt;#{reply.id}
-          - if index < comment_replies.size - 1
-            ' ,
-
-    - if topic_replies.present?
-      small.replies-list
-        br
-        - topic_replies.each_with_index do |reply, index|
-          a.reply-link.has-tooltip href="" data-tooltip="" aria-haspopup="true" title="#{reply.subject}" #{reply.id}
-          - if index < topic_replies.size - 1
-            ' ,
+p
+  small.comment-replies data-comment-replies=("#{ids_as_array(comment_replies)}")
+  small.topic-replies     data-topic-replies=("#{ids_as_array(topic_replies)}")

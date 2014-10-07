@@ -1,3 +1,11 @@
+javascript:
+
+  window.onload = function() {
+    var boardId = #{@board.id}
+    showRepliesList()
+    highlightRepliesInText()
+  };
+
 = render partial: "shared/board_header", locals: { board: @board }
 
 .row

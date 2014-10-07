@@ -19,10 +19,12 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find_by_id(params[:id])
 
-    if @comment.present?
-      render partial: "shared/bubble",
-              layout: false,
-              locals: { comment: @comment, show_replies: true }
+
+    if request.xhr?
+      render partial: "shared/bubble", layout: false, locals: {
+        comment: @comment,
+        show_replies: true,
+      }
     else
       render nothing: true
     end
