@@ -13,9 +13,9 @@ div.panel.bubble.post
       span.post_id =' comment.id
 
   p.text
-    = comment.text
+    = format_text(comment.text)
 
   - if show_replies
     = render partial: "shared/replies_list", locals: { comment_replies: comment.comment_replies, topic_replies: comment.topic_replies }
 
-    .bubbles-container
+  .bubbles-container
