@@ -3,7 +3,7 @@
     - if comment_replies.present?
       small.replies-list
         - comment_replies.each_with_index do |reply, index|
-          a.reply-link href="#" >>#{reply.id}
+          a.reply-link href="" onmouseover=("showBubble(this, '#{comment_path(reply)}')") &gt;&gt;#{reply.id}
           - if index < comment_replies.size - 1
             ' ,
 
@@ -11,6 +11,6 @@
       small.replies-list
         br
         - topic_replies.each_with_index do |reply, index|
-          a.reply-link href="#" >>T#{reply.id}
+          a.reply-link.has-tooltip href="" data-tooltip="" aria-haspopup="true" title="#{reply.subject}" #{reply.id}
           - if index < topic_replies.size - 1
             ' ,

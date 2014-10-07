@@ -16,6 +16,14 @@ class CommentsController < ApplicationController
   end
 
 
+  def show
+    @comment = Comment.find(params[:id])
+    render partial: "shared/bubble",
+            layout: false,
+            locals: { comment: @comment, show_replies: true }
+  end
+
+
   private
 
 
