@@ -15,7 +15,7 @@ div.topic
 
   p = topic.text
   ul.large-8.no-bullet
-    - topic.comments.each do |comment|
+    - topic.comments.includes([:comment_replies, :topic_replies]).each do |comment|
       li.panel
 
         // Do not show comment subject.
