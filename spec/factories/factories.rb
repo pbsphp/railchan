@@ -1,6 +1,3 @@
-def r_str
-	SecureRandom.hex(3)
-end
 FactoryGirl.define do
    factory :boards_group do
    		sequence(:name) 		{ |n| "name#{n}" }
