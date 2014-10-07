@@ -1,6 +1,15 @@
 div.topic
   h3
     a href="#{board_topic_path(@board, topic)}" = topic.subject || "NoName"
+
+  h6.subheader
+    i
+      span.author =' topic.author || "Anonymous"
+      ' at
+      span.datetime =' topic.created_at
+
+
+
   p = topic.text
   ul.large-8.no-bullet
     - skipped = skipped_comments(total: topic.comments.size, show: 3)
@@ -8,4 +17,15 @@ div.topic
       i.skipped-comments-info Skipped comments: #{skipped}.
     - topic.comments.last(3).each do |comment|
       li.panel
-        = comment.text
+
+        // Do not show comment subject.
+        / - if comment.subject.present?
+        /   h4 = comment.subject
+
+        h6.subheader
+          i
+            span.author =' comment.author || "Anonymous"
+            ' at
+            span.datetime =' topic.created_at
+
+        p = comment.text
