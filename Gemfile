@@ -37,6 +37,13 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
 
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
