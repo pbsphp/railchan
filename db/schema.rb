@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005155759) do
+ActiveRecord::Schema.define(version: 20141006112234) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 20141005155759) do
   end
 
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
+
+  create_table "replies", force: true do |t|
+    t.integer "comment_reply_id"
+    t.integer "topic_reply_id"
+    t.integer "comment_reply_to_id"
+    t.integer "topic_reply_to_id"
+  end
+
+  add_index "replies", ["comment_reply_id"], name: "index_replies_on_comment_reply_id"
+  add_index "replies", ["comment_reply_to_id"], name: "index_replies_on_comment_reply_to_id"
+  add_index "replies", ["topic_reply_id"], name: "index_replies_on_topic_reply_id"
+  add_index "replies", ["topic_reply_to_id"], name: "index_replies_on_topic_reply_to_id"
 
   create_table "topics", force: true do |t|
     t.string   "author"

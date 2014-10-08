@@ -8,4 +8,9 @@ module ApplicationHelper
     total - show > 0 ? total - show : nil
   end
 
+
+  def ids_as_array(record)
+    "[ #{record.collect(&:id).join(', ')} ]"
+  end
+
 end

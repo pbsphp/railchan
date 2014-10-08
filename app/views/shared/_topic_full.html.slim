@@ -1,4 +1,4 @@
-div.topic
+div.topic.post
   h3
     = topic.subject || "NoName"
   h6.subheader
@@ -6,20 +6,17 @@ div.topic
       span.author =' topic.author || "Anonymous"
       ' at
       span.datetime =' topic.created_at
+      ' #T
+      span.post_id =' topic.id
 
-  p = topic.text
+  p.text
+    = topic.text
+
+  = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }
+
+  .bubbles-container
+
   ul.large-8.no-bullet
-    - topic.comments.each do |comment|
-      li.panel
-
-        // Do not show comment subject.
-        / - if comment.subject.present?
-        /   h4 = comment.subject
-
-        h6.subheader
-          i
-            span.author =' comment.author || "Anonymous"
-            ' at
-            span.datetime =' topic.created_at
-
-        p = comment.text
+    - topic.comments.includes([:comment_replies, :topic_replies]).each do |comment|
+      li
+        = render partial: "shared/bubble", locals: { comment: comment, show_replies: true }
