@@ -36,6 +36,8 @@ gem 'foundation-rails'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'rails_config'
+
 
 
 group :development, :test do
