@@ -8,3 +8,6 @@ global:
 
     # Default topic subject
     subject: "Topic"
+
+    # Show $comments_in_preview comments in topic preview
+    comments_in_preview: 3

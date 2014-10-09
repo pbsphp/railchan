@@ -2,9 +2,8 @@ module ApplicationHelper
 
 
   # Returns number of skipped comments (or nil)
-  def skipped_comments(options)
-    total = options[:total]
-    show = options[:show]
+  def skipped_comments(total)
+    show = Settings.global.comments_in_preview
     total - show > 0 ? total - show : nil
   end
 

@@ -3,11 +3,11 @@
   = render topic
 
   .skipped-comments-info
-    - skipped = skipped_comments(total: topic.comments.size, show: 3)
+    - skipped = skipped_comments(topic.comments.size)
     - if skipped
       h6.skipped-comments-info
         i Skipped comments: #{skipped}.
 
   .comments-list
-    - topic.comments.last(3).each do |comment|
+    - topic.comments.last(Settings.global.comments_in_preview).each do |comment|
       = render comment
