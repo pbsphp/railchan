@@ -1,9 +1,25 @@
+
+- content_for :replies_js do
+  javascript:
+    var boardId = #{@board.id}
+    showRepliesList()
+    highlightRepliesInText()
+
+
 = render partial: "shared/board_header", locals: { board: @board }
+hr
 
 .row
-  .large-9.columns role="content"
-    - @board.topics.includes(:comments).references(:comments).each do |topic|
+
+  .large-10.columns role="content"
+    / TODO: use scopes
+    - @board.topics.includes(:comment_replies, :topic_replies).includes(comments: [:comment_replies, :topic_replies]).each do |topic|
       = render partial: "shared/topic_preview", locals: { topic: topic }
       hr
 
     = render partial: "shared/form_topic", locals: { board: @board, topic: @new_topic }
+
+
+  .large-2.columns
+    | NAVBAR, BANNERS AND OTHERS
+
