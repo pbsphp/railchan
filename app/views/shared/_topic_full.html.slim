@@ -3,5 +3,5 @@
   = render topic
 
   .comments-list.large-12
-    - topic.comments.includes([:comment_replies, :topic_replies]).each do |comment|
+    - topic.comments.with_replies.each do |comment|
       = render comment

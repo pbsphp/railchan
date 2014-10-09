@@ -13,7 +13,7 @@ hr
 
   .large-10.columns role="content"
     / TODO: use scopes
-    - @board.topics.includes(:comment_replies, :topic_replies).includes(comments: [:comment_replies, :topic_replies]).each do |topic|
+    - @board.topics.with_replies.with_comment_replies.each do |topic|
       = render partial: "shared/topic_preview", locals: { topic: topic }
       hr
 
