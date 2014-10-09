@@ -1,22 +1,34 @@
-
-nav.top-bar.hide-for-small data-topbar=""
+nav.top-bar data-topbar=""
   ul.title-area
     li.name
       h1
         a href="/" Railchan
 
+    li.toggle-topbar.menu-icon
+      a href="#"
+        span Menu
+
+
   section.top-bar-section
+
+    - if @board.present?
+      ul.left
+        li.divider
+        li
+          a href="#{board_path(@board)}"
+            | /#{@board.name}/
+        li.divider
+
     ul.right
-
       - @boards_groups.each do |boards_group|
-
         li.divider
         li.has-dropdown.not-click
-          a href="#" = boards_group.name
+          a href="javascript:;"
+            = boards_group.name
           ul.dropdown
             li.title.back.js-generated
               h5
-                a href="javascript:void(0)"  Back
+                a href="javascript:;" Back
 
             - boards_group.boards.each do |board|
               li

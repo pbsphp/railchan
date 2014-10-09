@@ -1,15 +1,18 @@
 .row
-  .text-center
-    h1 Railchan
+  .columns
+    h1.text-center Railchan - Rails Imageboard
+
+hr
 
 .row
-  .row.collapse
-    ul.large-block-grid-4.medium-block-grid-2.text-center
-      - @boards_groups.each do |boards_group|
-        li.columns
-          h3
-            = boards_group.name
+  ul.large-block-grid-4.medium-block-grid-2
+    - @boards_groups.each do |boards_group|
+      li.columns.text-center
+        h4
+          = boards_group.name
+
+        ul.no-bullet
           - boards_group.boards.each do |board|
-            a href="#{board_path(board)}"
-              | /#{board.name}/ - #{board.title}
-            br
+            li
+              a href="#{board_path(board)}"
+                | /#{board.name}/ - #{board.title}

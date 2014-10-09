@@ -40,7 +40,7 @@ window.showBubble = (refObject, id) ->
             })
 
             showRepliesListFor(bubble.find(".comment-replies").first())
-            highlightRepliesInTextFor(bubble.find(".post .text").first())
+            highlightRepliesInTextFor(bubble.find(".post .post-text").first())
 
     });
 
@@ -55,7 +55,7 @@ window.showRepliesListFor = (element) ->
         for id in replies
             $("<a></a>")
                 .attr("href", "")
-                .html("&gt;&gt;!!!#{id}")
+                .html("&gt;&gt;#{id}")
                 .attr("onmouseover", "showBubble(this, #{id})")
                 .appendTo($(element))
 
@@ -74,9 +74,9 @@ window.showRepliesList = ->
 
 window.highlightRepliesInTextFor = (element) ->
     text = $(element).html()
-    text = text.replace(/&gt;&gt;(\d+)/, """
+    text = text.replace(/&gt;&gt;(\d+)/g, """
         <a href="" onmouseover="showBubble(this, $1)">
-            &gt;&gt;!!!$1
+            &gt;&gt;$1
         </a>
     """)
 
@@ -88,5 +88,5 @@ window.highlightRepliesInTextFor = (element) ->
 
 window.highlightRepliesInText = ->
 
-    $(".post .text").each (index) ->
+    $(".post .post-text").each (index) ->
         highlightRepliesInTextFor(this)

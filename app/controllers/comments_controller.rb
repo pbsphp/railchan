@@ -21,10 +21,7 @@ class CommentsController < ApplicationController
 
 
     if request.xhr?
-      render partial: "shared/bubble", layout: false, locals: {
-        comment: @comment,
-        show_replies: true,
-      }
+      render @comment
     else
       render nothing: true
     end

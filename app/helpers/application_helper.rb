@@ -13,4 +13,19 @@ module ApplicationHelper
     "[ #{record.collect(&:id).join(', ')} ]"
   end
 
+
+  def post_author(author)
+    author.present? ? author : "Anonymous"
+  end
+
+
+  def post_datetime(datetime)
+    datetime.strftime("%d.%m.%Y %H:%M:%S")
+  end
+
+
+  def post_subject(subject)
+    subject || "Topic"
+  end
+
 end

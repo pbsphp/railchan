@@ -9,6 +9,8 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @new_topic = Topic.new
+
+    render "topics/index"
   end
 
 end

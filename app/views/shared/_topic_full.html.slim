@@ -1,22 +1,7 @@
-div.topic.post
-  h3
-    = topic.subject || "NoName"
-  h6.subheader
-    i
-      span.author =' topic.author || "Anonymous"
-      ' at
-      span.datetime =' topic.created_at
-      ' #T
-      span.post_id =' topic.id
+.topic
 
-  p.text
-    = topic.text
+  = render topic
 
-  = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }
-
-  .bubbles-container
-
-  ul.large-8.no-bullet
-    - topic.comments.includes([:comment_replies, :topic_replies]).each do |comment|
-      li
-        = render partial: "shared/bubble", locals: { comment: comment, show_replies: true }
+  .comments-list.large-12
+    - topic.comments.with_replies.each do |comment|
+      = render comment

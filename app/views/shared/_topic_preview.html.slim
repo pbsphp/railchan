@@ -1,20 +1,13 @@
-div.topic
-  h3
-    a href="#{board_topic_path(@board, topic)}" = topic.subject || "NoName"
+.topic
 
-  h6.subheader
-    i
-      span.author =' topic.author || "Anonymous"
-      ' at
-      span.datetime =' topic.created_at
+  = render topic
 
-  p = topic.text
-
-
-  ul.large-8.no-bullet
+  .skipped-comments-info
     - skipped = skipped_comments(total: topic.comments.size, show: 3)
     - if skipped
-      i.skipped-comments-info Skipped comments: #{skipped}.
+      h6.skipped-comments-info
+        i Skipped comments: #{skipped}.
+
+  .comments-list
     - topic.comments.last(3).each do |comment|
-      li
-        = render partial: "shared/bubble", locals: { comment: comment, show_replies: false }
+      = render comment

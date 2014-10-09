@@ -6,6 +6,10 @@ class Topic < ActiveRecord::Base
 
   default_scope { order("bumped_at DESC") }
 
+  scope :with_replies, -> { includes(:comment_replies, :topic_replies) }
+  scope :with_comment_replies,
+        -> { includes(comments: [:comment_replies, :topic_replies]) }
+
   before_create :initialize_with_current_timestamp
   after_create :parse_replies
 
