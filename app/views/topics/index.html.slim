@@ -4,6 +4,7 @@
     var boardId = #{@board.id}
     showRepliesList()
     highlightRepliesInText()
+    makePostIdsInsertable()
 
 
 = render partial: "shared/board_header", locals: { board: @board }

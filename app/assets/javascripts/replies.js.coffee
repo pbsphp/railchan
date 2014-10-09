@@ -90,3 +90,32 @@ window.highlightRepliesInText = ->
 
     $(".post .post-text").each (index) ->
         highlightRepliesInTextFor(this)
+
+
+
+# Make available inserting >>N to textarea
+
+window.makePostIdsInsertable = ->
+    $(".post-id").each ->
+        id = $(this).data("comment-id")
+        if id
+            link = $("<a></a>")
+                        .attr("href", "javascript:;")
+                        .click ->
+                            insertIntoTextarea(">>#{id}")
+                        .html($(this).html())
+
+            $(this).html(link)
+
+
+
+# Insert text to form textarea
+
+window.insertIntoTextarea = (text) ->
+    textarea = $(".post-textarea").first()
+    value = textarea.val()
+    strPos = textarea[0].selectionStart
+    front = (value).substring(0, strPos)
+    back = (value).substring(strPos, value.length)
+
+    textarea.val("#{front}#{text}#{back}");
