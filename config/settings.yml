@@ -1,0 +1,4 @@
+
+global:
+    # Topics with $bumplimit comments won't be bumped
+    bumplimit: 500

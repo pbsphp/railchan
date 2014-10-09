@@ -27,8 +27,9 @@ class Topic < ActiveRecord::Base
 
 
   def bump
-    # Can be called from another models, do not do it private!
-    self.update_columns(bumped_at: Time.now.utc)
+    if self.comments.count <= Settings.global.bumplimit
+      self.update_columns(bumped_at: Time.now.utc)
+    end
   end
 
 
