@@ -15,7 +15,7 @@ module ApplicationHelper
 
 
   def post_author(author)
-    author.present? ? author : "Anonymous"
+    author.present? ? author : Settings.global.author
   end
 
 
@@ -25,7 +25,7 @@ module ApplicationHelper
 
 
   def post_subject(subject)
-    subject || "Topic"
+    subject || Settings.global.subject
   end
 
 end

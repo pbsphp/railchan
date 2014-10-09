@@ -2,3 +2,9 @@
 global:
     # Topics with $bumplimit comments won't be bumped
     bumplimit: 500
+
+    # Default post author name
+    author: "Yoba"
+
+    # Default topic subject
+    subject: "Topic"
