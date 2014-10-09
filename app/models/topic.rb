@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   belongs_to :board
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :text, length: { in: 2..1024 }
 
@@ -13,7 +13,7 @@ class Topic < ActiveRecord::Base
   before_create :initialize_with_current_timestamp
   after_create :parse_replies
 
-  has_many :replies, foreign_key: :topic_reply_to_id
+  has_many :replies, foreign_key: :topic_reply_to_id, dependent: :destroy
 
   has_many :comment_replies,
             through: :replies,

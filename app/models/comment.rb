@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
 
   scope :with_replies, -> { includes(:comment_replies, :topic_replies) }
 
-  has_many :replies, foreign_key: :comment_reply_to_id
+  has_many :replies, foreign_key: :comment_reply_to_id, dependent: :destroy
 
   has_many :comment_replies,
             through: :replies,
