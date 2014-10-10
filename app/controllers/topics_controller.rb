@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 
 
   def index
-    @topics = Topic.all
+    @topics = Topic.with_replies.with_comment_replies.page(params[:page])
     @new_topic = Topic.new
   end
 

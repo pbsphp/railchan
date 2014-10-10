@@ -212,6 +212,7 @@ DEPENDENCIES
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   rails (= 4.1.6)
   rails_config
   rspec-rails (~> 3.1.0)

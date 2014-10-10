@@ -32,6 +32,8 @@ gem 'simple_form'
 
 gem 'foundation-rails'
 
+gem 'kaminari'
+
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
