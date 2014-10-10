@@ -12,6 +12,7 @@ class Topic < ActiveRecord::Base
 
   before_create :initialize_with_current_timestamp
   after_create :parse_replies
+  after_create :destroy_old_topics
 
   has_many :replies, foreign_key: :topic_reply_to_id, dependent: :destroy
 
@@ -58,6 +59,11 @@ class Topic < ActiveRecord::Base
         topic.topic_replies << self
       end
     end
+  end
+
+
+  def destroy_old_topics
+    self.board.destroy_old_topics
   end
 
 end
