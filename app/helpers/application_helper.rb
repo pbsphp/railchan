@@ -24,7 +24,7 @@ module ApplicationHelper
 
 
   def post_subject(subject)
-    subject || Settings.global.subject
+    subject.present? ? subject : Settings.global.subject
   end
 
 end
