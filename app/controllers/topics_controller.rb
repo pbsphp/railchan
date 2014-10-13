@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
+    @topic.ip = request.remote_addr
     @topic.board = @board
 
     if @topic.save

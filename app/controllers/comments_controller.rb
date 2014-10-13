@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
     @comment = Comment.new(comment_params)
     @comment.topic = @topic
+    @comment.ip = request.remote_addr
 
     if @comment.save
       redirect_to board_topic_path(@board, @topic)
