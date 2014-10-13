@@ -1,5 +1,5 @@
-div#flash_messages
+#flash_messages
   - flash.each do |key, value|
     div class=("alert-box #{key.to_s}") data-alert=""
-      = content_tag(:div, value, class: "flash #{key}")
+      .flash-message = value
       a.close href="#"  &times;

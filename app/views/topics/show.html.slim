@@ -1,4 +1,15 @@
+
+- content_for :replies_js do
+  javascript:
+    var boardId = #{@board.id}
+    showRepliesList()
+    highlightRepliesInText()
+    makePostIdsInsertable()
+
+
 = render partial: "shared/board_header", locals: { board: @board }
+
+hr
 
 .row
   .large-9.columns role="content"

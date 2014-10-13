@@ -1,0 +1,17 @@
+
+global:
+    # Topics with $bumplimit comments won't be bumped
+    bumplimit: 500
+
+    # Default post author name
+    author: "Yoba"
+
+    # Default topic subject
+    subject: "Topic"
+
+    # Show $comments_in_preview comments in topic preview
+    comments_in_preview: 3
+
+    # Max number of topic in board
+    # 0 for unlimited
+    max_topics_in_board: 10

@@ -16,6 +16,18 @@ class CommentsController < ApplicationController
   end
 
 
+  def show
+    @comment = Comment.find_by_id(params[:id])
+
+
+    if request.xhr?
+      render @comment
+    else
+      render nothing: true
+    end
+  end
+
+
   private
 
 

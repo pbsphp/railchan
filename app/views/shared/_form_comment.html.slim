@@ -1,6 +1,24 @@
 h3 Reply
 
-= simple_form_for [ board, topic, comment ] do |f|
-  = f.input :subject
-  = f.input :text
-  = f.button :submit
+= form_for [ board, topic, comment ] do |f|
+  .row.collapse
+    .small-2.large-2.columns
+      span.prefix Name
+    .small-8.large-8.columns
+      = f.text_field :author, placeholder: "Anonymous"
+    .small-2.large-2.columns
+      = f.submit "Post", class: "button postfix"
+
+  .row.collapse
+    .small-2.large-2.columns
+      span.prefix Email / Sage
+    .small-8.large-8.columns
+      = f.text_field :email, placeholder: "Bump"
+    .small-2.large-2.columns.text-center
+      .switch
+        input#exampleCheckboxSwitch type=("checkbox")
+        label for=("exampleCheckboxSwitch")
+
+  .row.collapse
+    .small-12.large-12.columns
+      = f.text_area :text, placeholder: "Message", rows: "3", class: "post-textarea"

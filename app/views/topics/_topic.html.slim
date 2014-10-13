@@ -1,0 +1,18 @@
+.post.op-post
+  h3.post-subject
+    a href="#{board_topic_path(@board, topic)}"
+      = post_subject(topic.subject)
+  .header
+    span.author =' post_author(topic.author)
+    ' at
+    span.datetime =' post_datetime(topic.created_at)
+    span.post_id #T#{topic.id}
+
+  article
+    p.post-text
+      = topic.text
+
+  .post-replies
+    = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }
+
+  .bubbles-container

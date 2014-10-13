@@ -1,5 +1,5 @@
 class BoardsGroup < ActiveRecord::Base
-  has_many :boards
+  has_many :boards, dependent: :destroy
 
-  validates :name, format: { with: /\A\w+\z/ }
+  validates :name, presence: true
 end

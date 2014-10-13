@@ -1,11 +1,13 @@
-div.topic
-  h3
-    a href="#{board_topic_path(@board, topic)}" = topic.subject || "NoName"
-  p = topic.text
-  ul.large-8.no-bullet
-    - skipped = skipped_comments(total: topic.comments.size, show: 3)
+.topic
+
+  = render topic
+
+  .skipped-comments-info
+    - skipped = skipped_comments(topic.comments.size)
     - if skipped
-      i.skipped-comments-info Skipped comments: #{skipped}.
-    - topic.comments.last(3).each do |comment|
-      li.panel
-        = comment.text
+      h6.skipped-comments-info
+        i Skipped comments: #{skipped}.
+
+  .comments-list
+    - topic.comments.last(Settings.global.comments_in_preview).each do |comment|
+      = render comment
