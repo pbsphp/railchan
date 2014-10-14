@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :protect_from_banned, only: :create
 
 
   def create
@@ -19,7 +20,6 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find_by_id(params[:id])
-
 
     if request.xhr?
       render @comment

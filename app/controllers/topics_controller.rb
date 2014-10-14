@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :init_board
+  before_filter :protect_from_banned, only: :create
 
 
   def index

@@ -14,4 +14,18 @@ class ApplicationController < ActionController::Base
   def get_boards_and_boards_groups
     @boards_groups = BoardsGroup.eager_load(:boards)
   end
+
+
+  def protect_from_banned
+    ban = Ban.find_by_ip(request.remote_addr)
+    if ban.present? && (ban.expires_at.nil? || (ban.expires_at > Time.now.utc))
+      redirect_to :back, flash: {
+        error: %Q<You are banned! Reason: "#{ban.reason}". Expires: #{
+                  ban.expires_at.present? ?
+                    ban.expires_at :
+                    "never"
+                  }.>
+        }
+    end
+  end
 end
