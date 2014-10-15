@@ -1,6 +1,5 @@
 module ApplicationHelper
 
-
   # Returns number of skipped comments (or nil)
   def skipped_comments(total)
     show = Settings.global.comments_in_preview
@@ -25,6 +24,25 @@ module ApplicationHelper
 
   def post_subject(subject)
     subject.present? ? subject : Settings.global.subject
+  end
+
+
+  def format_post_text(post_text)
+    text = html_escape(post_text)
+
+    text.gsub! /\n+/, "<br />"
+
+    text.gsub! /&gt;&gt;(\d+)/, %Q[
+      <a href="" onmouseover="showBubble(this, \\1)">
+        &gt;&gt;\\1
+      </a>]
+
+    text.gsub! /&gt;&gt;T(\d+)/, %Q[
+      <a href="javascript:;">
+        &gt;&gt;T\\1
+      </a>]
+
+    raw(text)
   end
 
 end

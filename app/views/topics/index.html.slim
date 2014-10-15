@@ -1,12 +1,3 @@
-
-- content_for :replies_js do
-  javascript:
-    var boardId = #{@board.id}
-    showRepliesList()
-    highlightRepliesInText()
-    makePostIdsInsertable()
-
-
 = render partial: "shared/board_header", locals: { board: @board }
 hr
 
@@ -24,5 +15,5 @@ hr
 
 
   .large-2.columns
-    | NAVBAR, BANNERS AND OTHERS
+    | Place for navbars, banners, etc.
 
