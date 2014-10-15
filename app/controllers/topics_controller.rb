@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
 
 
   def init_board
-    @board = Board.find(params[:board_id])
+    @board = Board.friendly.find(params[:board_id])
   end
 
 end

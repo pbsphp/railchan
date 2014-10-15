@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
 
   def create
-    @board = Board.find(params[:board_id])
+    @board = Board.friendly.find(params[:board_id])
     @topic = Topic.find(params[:topic_id])
 
     @comment = Comment.new(comment_params)

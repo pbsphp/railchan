@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   #   end
 
 
-  resources :boards do
+  resources :boards, path: "/" do
     resources :topics do
       resources :comments
     end

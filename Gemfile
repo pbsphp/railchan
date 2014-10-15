@@ -33,13 +33,13 @@ gem 'simple_form'
 gem 'foundation-rails'
 
 gem 'kaminari'
+gem 'friendly_id', '~> 5.0.4'
 
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'rails_config'
-
 
 
 group :development, :test do

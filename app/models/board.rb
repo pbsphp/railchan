@@ -1,4 +1,7 @@
 class Board < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name
+
   belongs_to :boards_group
   has_many :topics, dependent: :destroy
 
