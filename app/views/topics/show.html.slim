@@ -1,3 +1,6 @@
+- content_for :title, "/#{@board.name}/ - #{post_subject(@topic.subject)}"
+
+
 = render partial: "shared/board_header", locals: { board: @board }
 
 hr

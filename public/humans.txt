@@ -1,0 +1,14 @@
+# humanstxt.org
+
+# TEAM
+
+    Developer: Pbs (pbsphp)
+    Github: pbsphp
+    Location: Kazan, RU
+
+    ...
+
+
+# THANKS
+
+    ...

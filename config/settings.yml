@@ -21,3 +21,9 @@ global:
     # Max number of topic in board
     # 0 for unlimited
     max_topics_in_board: 10
+
+    # Meta keywords
+    keywords: "railchan,ror,ruby,rails,forum"
+
+    # Meta author
+    author: "pbsphp"
