@@ -1,5 +1,11 @@
 
 global:
+    # Name
+    name: Railchan
+
+    # Description
+    description: "Rails Imageboard"
+
     # Topics with $bumplimit comments won't be bumped
     bumplimit: 500
 
