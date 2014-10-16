@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
 
   def show
-    @comment = Comment.find_by_id(params[:id])
+    @comment = Comment.find(params[:id])
 
     if request.xhr?
       render @comment
