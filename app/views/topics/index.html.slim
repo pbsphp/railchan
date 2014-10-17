@@ -1,4 +1,4 @@
-- content_for :title, "/#{@board.name}/ - #{@board.title}"
+- metamagic(title: "/#{@board.name}/ - #{@board.title}", description: @board.title, og: { url: board_url(@board), title: "/#{@board.name}/ - #{@board.title}" })
 
 
 = render partial: "shared/board_header", locals: { board: @board }

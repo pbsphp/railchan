@@ -56,7 +56,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-
   resources :boards, path: "/" do
     resources :topics do
       resources :comments
@@ -66,5 +65,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [ :show ]
 
+
+  root "boards#index"
 
 end

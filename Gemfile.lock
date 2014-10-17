@@ -104,6 +104,8 @@ GEM
       activesupport (>= 3.0.0)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    metamagic (3.1.6)
+      rails (>= 3.0.0)
     mime-types (2.3)
     minitest (5.4.2)
     multi_json (1.10.1)
@@ -216,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  metamagic
   rails (= 4.1.6)
   rails_config
   rspec-rails (~> 3.1.0)

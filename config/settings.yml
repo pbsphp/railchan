@@ -5,10 +5,11 @@ global:
 
 
 meta:
-    title: Railchan
+    title: "Railchan - Rails Imageboard"
     description: "Rails imageboard"
     author: pbsphp
     keywords: "railchan, ror, ruby on rails, ruby, imageboard, forum"
+    image: "railchan-logo.png"
 
 
 topic:

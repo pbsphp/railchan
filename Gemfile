@@ -35,6 +35,8 @@ gem 'foundation-rails'
 gem 'kaminari'
 gem 'friendly_id', '~> 5.0.4'
 
+gem 'metamagic'
+
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
