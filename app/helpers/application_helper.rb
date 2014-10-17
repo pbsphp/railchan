@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # Returns number of skipped comments (or nil)
   def skipped_comments(total)
-    show = Settings.global.comments_in_preview
+    show = Settings.topic.comments_in_preview
     total - show > 0 ? total - show : nil
   end
 
@@ -13,7 +13,7 @@ module ApplicationHelper
 
 
   def post_author(author)
-    author.present? ? author : Settings.global.author
+    author.present? ? author : Settings.topic.author
   end
 
 
@@ -23,7 +23,7 @@ module ApplicationHelper
 
 
   def post_subject(subject)
-    subject.present? ? subject : Settings.global.subject
+    subject.present? ? subject : Settings.topic.subject
   end
 
 

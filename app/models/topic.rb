@@ -28,7 +28,7 @@ class Topic < ActiveRecord::Base
 
 
   def bump
-    if self.comments.count <= Settings.global.bumplimit
+    if self.comments.count <= Settings.topic.bumplimit
       self.update_columns(bumped_at: Time.now.utc)
     end
   end

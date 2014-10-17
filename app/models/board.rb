@@ -9,7 +9,7 @@ class Board < ActiveRecord::Base
 
 
   def destroy_old_topics
-    max_topics_in_board = Settings.global.max_topics_in_board
+    max_topics_in_board = Settings.topic.max_topics_in_board
 
     if (max_topics_in_board != 0) and (self.topics.count > max_topics_in_board)
       ids = self.topics.limit(max_topics_in_board).ids
