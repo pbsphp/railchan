@@ -8,7 +8,8 @@ class Comment < ActiveRecord::Base
   after_create :bump_topic
   after_create :parse_replies
 
-  scope :with_replies, -> { includes(:comment_replies, :topic_replies) }
+  scope :with_replies, -> { includes( { comment_replies: { topic: :board } },
+                                      { topic_replies:     :board          }) }
 
   has_many :replies, foreign_key: :comment_reply_to_id, dependent: :destroy
 

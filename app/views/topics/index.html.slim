@@ -1,10 +1,4 @@
-
-- content_for :replies_js do
-  javascript:
-    var boardId = #{@board.id}
-    showRepliesList()
-    highlightRepliesInText()
-    makePostIdsInsertable()
+- metamagic(title: "/#{@board.name}/ - #{@board.title}", description: @board.title, og: { url: board_url(@board), title: "/#{@board.name}/ - #{@board.title}" })
 
 
 = render partial: "shared/board_header", locals: { board: @board }
@@ -24,5 +18,5 @@ hr
 
 
   .large-2.columns
-    | NAVBAR, BANNERS AND OTHERS
+    | Place for navbars, banners, etc.
 

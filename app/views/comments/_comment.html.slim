@@ -3,12 +3,13 @@
     span.post-author =' post_author(comment.author)
     ' at
     span.post-datetime =' post_datetime(comment.created_at)
-    span.post-id data-comment-id=("#{comment.id}")
-      | ##{comment.id}
+    span.post-id
+      a href="javascript:;" onclick=("insertIntoTextarea('>>#{comment.id}')")
+        | ##{comment.id}
 
   article
     p.post-text
-      = comment.text
+      = format_post_text(comment.text)
 
   .post-replies
     = render partial: "shared/replies_list", locals: { comment_replies: comment.comment_replies, topic_replies: comment.topic_replies }

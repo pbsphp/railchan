@@ -1,2 +1,20 @@
-small.comment-replies data-comment-replies=("#{ids_as_array(comment_replies)}")
-small.topic-replies     data-topic-replies=("#{ids_as_array(topic_replies)}")
+small.comment-replies
+  - comment_replies.each do |reply|
+    a href="#{board_topic_path(reply.topic.board, reply.topic)}"
+      =' reply.id
+    a href="javascript:;" onmouseover=("showBubble(this, #{reply.id})")
+      ' [&darr;]
+
+    - if reply != comment_replies.last
+      ' ,
+
+- if comment_replies.present? && topic_replies.present?
+  br
+
+small.topic-replies
+  - topic_replies.each do |reply|
+    a href="#{board_topic_path(reply.board, reply)}"
+      ' T#{reply.id}
+
+    - if reply != topic_replies.last
+      ' ,

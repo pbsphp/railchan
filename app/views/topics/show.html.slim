@@ -1,10 +1,4 @@
-
-- content_for :replies_js do
-  javascript:
-    var boardId = #{@board.id}
-    showRepliesList()
-    highlightRepliesInText()
-    makePostIdsInsertable()
+- metamagic(title: "/#{@board.name}/ - #{post_subject(@topic.subject)}", description: post_subject(@topic.subject), og: { url: board_topic_url(@board, @topic), title: post_subject(@topic.subject), description: post_subject(@topic.subject) })
 
 
 = render partial: "shared/board_header", locals: { board: @board }

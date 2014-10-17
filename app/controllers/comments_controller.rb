@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
+  before_filter :protect_from_banned, only: :create
 
 
   def create
-    @board = Board.find(params[:board_id])
+    @board = Board.friendly.find(params[:board_id])
     @topic = Topic.find(params[:topic_id])
 
     @comment = Comment.new(comment_params)
     @comment.topic = @topic
+    @comment.ip = request.remote_addr
 
     if @comment.save
       redirect_to board_topic_path(@board, @topic)
@@ -17,8 +19,7 @@ class CommentsController < ApplicationController
 
 
   def show
-    @comment = Comment.find_by_id(params[:id])
-
+    @comment = Comment.find(params[:id])
 
     if request.xhr?
       render @comment

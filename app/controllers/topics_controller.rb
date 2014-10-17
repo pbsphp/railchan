@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :init_board
+  before_filter :protect_from_banned, only: :create
 
 
   def index
@@ -16,6 +17,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
+    @topic.ip = request.remote_addr
     @topic.board = @board
 
     if @topic.save
@@ -35,7 +37,7 @@ class TopicsController < ApplicationController
 
 
   def init_board
-    @board = Board.find(params[:board_id])
+    @board = Board.friendly.find(params[:board_id])
   end
 
 end

@@ -6,11 +6,14 @@
     span.author =' post_author(topic.author)
     ' at
     span.datetime =' post_datetime(topic.created_at)
-    span.post_id #T#{topic.id}
+    span.post-id data-topic-id=("#{topic.id}")
+      a href="javascript:;" onclick=("insertIntoTextarea('>>T#{topic.id}')")
+        | #T#{topic.id}
+
 
   article
     p.post-text
-      = topic.text
+      = format_post_text(topic.text)
 
   .post-replies
     = render partial: "shared/replies_list", locals: { comment_replies: topic.comment_replies, topic_replies: topic.topic_replies }

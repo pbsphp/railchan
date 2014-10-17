@@ -9,5 +9,5 @@
         i Skipped comments: #{skipped}.
 
   .comments-list
-    - topic.comments.last(Settings.global.comments_in_preview).each do |comment|
+    - topic.comments.last(Settings.topic.comments_in_preview).each do |comment|
       = render comment
