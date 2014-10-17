@@ -7,13 +7,9 @@ module ApplicationHelper
   end
 
 
-  def ids_as_array(record)
-    "[ #{record.collect(&:id).join(', ')} ]"
-  end
-
-
   def post_author(author)
-    author.present? ? author : Settings.topic.author
+    a = author.present? ? author : Settings.topic.author
+    truncate(a, length: 25)
   end
 
 
@@ -23,7 +19,8 @@ module ApplicationHelper
 
 
   def post_subject(subject)
-    subject.present? ? subject : Settings.topic.subject
+    s = subject.present? ? subject : Settings.topic.subject
+    truncate(s, length: 50)
   end
 
 
@@ -41,6 +38,10 @@ module ApplicationHelper
       <a href="javascript:;">
         &gt;&gt;T\\1
       </a>]
+
+    # Truncate long lines
+    # Why? Coz I fuckin' love regexes, that's why!
+    text.gsub! /(\S{100})(?:\S++)/, %Q[\\1...]
 
     raw(text)
   end
